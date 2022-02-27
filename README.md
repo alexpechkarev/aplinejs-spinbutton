@@ -1,5 +1,5 @@
 # aplinejs-spinbutton
-Alpine JS Spinbutton component
+Alpine.js Spinbutton component
 
 
 ```
