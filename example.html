@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpine JS Spinbutton</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+
+<body>
+    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="bg-white">
+            <div class="px-4 py-16 mx-auto sm:py-24 sm:px-6 lg:px-8">
+                <div class="bg-white">
+                    <div class="px-4 py-12 mx-auto text-center max-w-7xl sm:px-6 lg:py-16 lg:px-8">
+                        <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                            <span class="block">Alpine JS Spinbutton</span>
+                        </h2>
+                        <span class="block"><a
+                  href="https://tailwindcss.com/"
+                  target="_new"
+                  alt="Tailwind CSS"
+                  >Tailwind CSS</a
+                >
+                used to style this example component.</span
+              >
+              <div class="flex justify-center mt-8">
+                <div
+                  class="relative z-0 inline-flex rounded-md shadow-sm"
+                  x-data="spinbutton"
+                >
+                  <button
+                    type="button"
+                    @click="minus"
+                    @keyup.down="minus"
+                    class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-l-md hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M18 12H6"
+                      />
+                    </svg>
+                  </button>
+
+                  <output
+                    x-text="quantity"
+                    class="relative inline-flex items-center justify-center w-24 px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+                  ></output>
+
+                  <button
+                    type="button"
+                    @click="plus"
+                    @keyup.up="plus"
+                    class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+             
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("alpine:init", () => {
+            Alpine.data("spinbutton", (quantity) => ({
+                quantity: 0,
+                init() {
+                    this.quantity = quantity || 0;
+                },
+
+                plus() {
+                    this.quantity++;
+                },
+                minus() {
+                    if (this.quantity > 0) {
+                        this.quantity--;
+                    }
+                },
+            }));
+        });
+    </script>
+    </div>
+</body>
+
+</html>
